@@ -1,0 +1,26 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Local databases, exports and logs
+*.sqlite3
+*.db
+*.jsonl
+*.log
+shambafresh_data.json
+
+# Django generated files
+staticfiles/
+media/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
