@@ -124,7 +124,13 @@ TIDB_HOST = os.getenv("TIDB_HOST", "").strip()
 
 if TIDB_HOST:
 
-    TIDB_CA_PATH = os.getenv("TIDB_CA_PATH", "").strip()
+    TIDB_CA_PATH = os.getenv(
+    "TIDB_CA_PATH",
+    "certs/isrgrootx1.pem"
+).strip()
+
+if not os.path.isabs(TIDB_CA_PATH):
+    TIDB_CA_PATH = str(BASE_DIR / TIDB_CA_PATH)
 
     if not TIDB_CA_PATH:
         raise ImproperlyConfigured(
