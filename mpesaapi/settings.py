@@ -119,23 +119,16 @@ WSGI_APPLICATION = "mpesaapi.wsgi.application"
 # --------------------------------------------------
 # Local: SQLite
 # Production: TiDB Cloud
-
 TIDB_HOST = os.getenv("TIDB_HOST", "").strip()
 
 if TIDB_HOST:
-
     TIDB_CA_PATH = os.getenv(
-    "TIDB_CA_PATH",
-    "certs/isrgrootx1.pem"
-).strip()
+        "TIDB_CA_PATH",
+        "certs/isrgrootx1.pem"
+    ).strip()
 
-if not os.path.isabs(TIDB_CA_PATH):
-    TIDB_CA_PATH = str(BASE_DIR / TIDB_CA_PATH)
-
-    if not TIDB_CA_PATH:
-        raise ImproperlyConfigured(
-            "TIDB_CA_PATH must point to the TiDB CA certificate."
-        )
+    if not os.path.isabs(TIDB_CA_PATH):
+        TIDB_CA_PATH = str(BASE_DIR / TIDB_CA_PATH)
 
     if not os.path.isfile(TIDB_CA_PATH):
         raise ImproperlyConfigured(
@@ -160,16 +153,13 @@ if not os.path.isabs(TIDB_CA_PATH):
             },
         }
     }
-
 else:
-
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-
 # --------------------------------------------------
 # PASSWORD VALIDATION
 # --------------------------------------------------
